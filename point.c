@@ -17,7 +17,7 @@ Point * point_new (int x, int y, char symbol){
 
     p->x = x;
     p->y = y;
-    p->symbol = symbol;
+    strcpy(p->symbol, symbol);
     p->visited = FALSE;
 
     return p;
@@ -84,7 +84,10 @@ Status point_setVisited (Point *p, Bool bol){
 }
 
 Point *point_hardcpy (const Point *src){
+    Point *trg;
 
+    trg = point_new(point_getCoordinateX(src), point_getCoordinateY(src), point_getSymbol(src));
+    return trg;
 }
 
 Bool point_equal (const void *p1, const void *p2){
