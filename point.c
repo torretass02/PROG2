@@ -17,7 +17,7 @@ Point * point_new (int x, int y, char symbol){
 
     p->x = x;
     p->y = y;
-    strcpy(p->symbol, symbol);
+    p->symbol = symbol;
     p->visited = FALSE;
 
     return p;
@@ -62,11 +62,11 @@ Status point_setCoordinateY (Point *p, int y){
 }
 
 Status  point_setSymbol (Point *p, char c){
-    if(p == NULL || c == NULL) return ERROR;
+    if(p == NULL) return ERROR;
 
-    if(!strcpy(p->symbol, c)) return ERROR;
+    if(p->symbol != c) return ERROR;
 
-    else return OK
+    else return OK;
 }
 
 Bool point_getVisited (const Point *p){
@@ -103,7 +103,7 @@ int point_print (FILE *pf, const Point *p){
         return -1;
     }
     
-    fprintf(pf, "[(%d, %d): %s]", p->x, p->y, p->symbol);
+    fprintf(pf, "[(%d, %d): %c]", p->x, p->y, p->symbol);
 
     return 0;
 }

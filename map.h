@@ -177,7 +177,7 @@ Bool map_equal (const void *_mp1, const void *_mp2);
 int map_print (FILE*pf, Map *mp);   
 
 
-Point * map_dfs (Map *mp);  // DFS (P2)
+Point * map_dfs (Map *mp); 
 
-#endif /* MAP_H */
+#endif
 

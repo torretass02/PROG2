@@ -5,7 +5,6 @@
 
 int main(){
     Point *p[4];
-    Point *t;
     int i;
 
     p[0] = point_new(0, 0, BARRIER);
@@ -25,7 +24,6 @@ int main(){
     p[2] = point_hardcpy(p[0]);
     printf("Creating p[2]: [(%d, %d): %c] \n", point_getCoordinateX(p[2]), point_getCoordinateY(p[2]), point_getSymbol(p[2]));
 
-    printf("\n");
     if(point_equal(p[0], p[2])==TRUE){
         printf("Equal points p[0] and p[2]? YES \n");
     }
@@ -36,7 +34,6 @@ int main(){
     point_setSymbol(p[2], SPACE);
     printf("Modifying p[2]: [(%d, %d): %c] \n", point_getCoordinateX(p[2]), point_getCoordinateY(p[2]), point_getSymbol(p[2]));
 
-    printf("\n");
     if(point_equal(p[0], p[2])==TRUE){
         printf("Equal points p[0] and p[2]? YES \n");
     }
@@ -56,4 +53,7 @@ int main(){
     for(i=0;i<4;i++){
         printf("[(%d, %d): %c]", point_getCoordinateX(p[i]), point_getCoordinateY(p[i]), point_getSymbol(p[i]));
     }
+    printf("\n");
+
+    return 0;
 }

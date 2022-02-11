@@ -1,24 +1,17 @@
-CC = gcc -g -ansi -pedantic
-CFLAGS = -Wall
-EXE = p1_e1
+CC = gcc
+CFLAGS = -Wall -pedantic
+objetos = point.o p1_e1.o
+ficheros = point.c p1_e1.c
 
-all : $(EXE)
+all: $(objetos)
+	$(CC) $(CFLAGS) $(objetos)
+	./a.out
 
-.PHONY : clean
+point.o : point.c point.h map.h types.h
+	$(CC) $(CFLAGS) -c point.c
 
-clean :
-	rm -f *.o core $(EXE)
-	$(EXE) : % : %.o point.o types.o
-	$(CC) $(CFLAGS) -o $@ $@.o point.o types.o
+p1_e1.o : p1_e1.c point.h
+	$(CC) $(CFLAGS) -c p1_e1.c
 
-
-point.o : point.c point.h 
-	$(CC) $(CFLAGS) -c $<
-
-types.o : types.h
-	$(CC) $(CFLAGS) -c $<
-
-p1_e1:
-	@./p1_e1
-
-
+clean:
+	rm -f all $(objetos)
