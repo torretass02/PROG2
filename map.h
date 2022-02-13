@@ -42,7 +42,7 @@ Map * map_new (unsigned int nrows,  unsigned int ncols);
  *
  * @param g Pointer to graph to be freed.
  **/
-void map_free (Map *);
+void map_free (Map *mp);
 
 /**
  * @brief Inserts a point in a map.

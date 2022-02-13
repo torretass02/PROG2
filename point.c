@@ -64,9 +64,9 @@ Status point_setCoordinateY (Point *p, int y){
 Status  point_setSymbol (Point *p, char c){
     if(p == NULL) return ERROR;
 
-    if(p->symbol != c) return ERROR;
+    p->symbol = c;
 
-    else return OK;
+    return OK;
 }
 
 Bool point_getVisited (const Point *p){
@@ -93,7 +93,7 @@ Point *point_hardcpy (const Point *src){
 Bool point_equal (const void *p1, const void *p2){
     if(!p1 || !p2) return FALSE;
 
-    if(p1 == p2) return TRUE;
+    if(point_getCoordinateX(p1) == point_getCoordinateX(p2) && point_getCoordinateY(p1) == point_getCoordinateY(p2) && point_getSymbol(p1) == point_getSymbol(p2)) return TRUE;
     else return FALSE;
 }
 
