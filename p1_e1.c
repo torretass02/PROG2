@@ -61,5 +61,8 @@ int main(){
     }
     printf("\n");
 
+    for(i=0; i<4; i++){
+        point_free(p[i]);
+    }
     return 0;
 }
