@@ -69,13 +69,13 @@ Point *map_getNeighboor(const Map *mp, const Point *p, Position pos){
         return mp->array[point_getCoordinateX(p)+1][point_getCoordinateY(p)];
     }
     else if(pos == UP){
-        return mp->array[point_getCoordinateX(p)][point_getCoordinateY(p)+1];
+        return mp->array[point_getCoordinateX(p)][point_getCoordinateY(p)-1];
     }
     else if(pos == LEFT){
         return mp->array[point_getCoordinateX(p)-1][point_getCoordinateY(p)];
     }
     else if(pos == DOWN){
-        return mp->array[point_getCoordinateX(p)][point_getCoordinateY(p)-1];
+        return mp->array[point_getCoordinateX(p)][point_getCoordinateY(p)+1];
     }
     else if(pos == STAY){
         return mp->array[point_getCoordinateX(p)][point_getCoordinateY(p)];
