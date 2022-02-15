@@ -117,6 +117,9 @@ Map * map_readFromFile (FILE *pf){
             if(symbol == OUTPUT){
                 map_setOutput(mp, point_new(j, i, symbol));
             }
+            else if(symbol == INPUT){
+                map_setInput(mp, point_new(j, i, symbol));
+            }
         }
         fscanf(pf, "\n");
     }
