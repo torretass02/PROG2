@@ -99,8 +99,25 @@ Status map_setOutput (Map *mp,Point *p){
     return OK;
 }
 
-/*Map * map_readFromFile (FILE *pf){
+Map * map_readFromFile (FILE *pf){
+    Map *mp = NULL;
+    int rows, cols, i, j=0;
+    char symbol;
 
+    if(fscanf(pf, "%d %d\n", &rows, &cols)!=2) return NULL;
+
+    mp = map_new(rows, cols);
+
+    if(mp == NULL) return NULL;
+
+    for(i=0; i<rows; i++){
+        for(j=0; j<cols; j++){
+            fscanf(pf, "%c", &symbol);
+            if(map_insertPoint(mp, point_new(j, i, symbol))==NULL) return NULL;
+        }
+        fscanf(pf, "\n");
+    }
+    return mp;
 }
 
 Bool map_equal (const void *_mp1, const void *_mp2){
@@ -119,7 +136,7 @@ Bool map_equal (const void *_mp1, const void *_mp2){
         return TRUE;
     }
     return FALSE;
-}*/
+}
 
 int map_print (FILE*pf, Map *mp){
     int i, j;

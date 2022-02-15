@@ -2,7 +2,7 @@ CC = gcc -g -ansi -pedantic
 CFLAGS = -Wall
 objetos = point.o map.o
 
-EXE = p1_e1 p1_e2
+EXE = p1_e1 p1_e2 p1_e3
 
 
 all : $(EXE)
@@ -28,10 +28,16 @@ p1_e1.o : p1_e1.c point.h
 p1_e2.o : p1_e2.c map.h point.h
 	$(CC) $(CFLAGS) -c $<
 
+p1_e3.o : p1_e3.c map.h point.h
+	$(CC) $(CFLAGS) -c $<
+
 ej1_test:
 	@./p1_e1
 
 ej2_test:
 	@./p1_e2
+
+ej3_test:
+	@./p1_e3 laberinto_1.txt
 
 
