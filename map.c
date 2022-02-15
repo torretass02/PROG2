@@ -114,6 +114,9 @@ Map * map_readFromFile (FILE *pf){
         for(j=0; j<cols; j++){
             fscanf(pf, "%c", &symbol);
             if(map_insertPoint(mp, point_new(j, i, symbol))==NULL) return NULL;
+            if(symbol == OUTPUT){
+                map_setOutput(mp, point_new(j, i, symbol));
+            }
         }
         fscanf(pf, "\n");
     }
@@ -130,7 +133,7 @@ Bool map_equal (const void *_mp1, const void *_mp2){
         for(i=0; i<map_getNrows(_mp1); i++){
             for(j=0; j<map_getNcols(_mp1); j++){
                 bool = point_equal(map_getPoint(_mp1, point_new(j, i, BARRIER)), map_getPoint(_mp2, point_new(j, i, BARRIER)));
-                if(bool = FALSE) return FALSE;
+                if(bool == FALSE) return FALSE;
             }
         }
         return TRUE;

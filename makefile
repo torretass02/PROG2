@@ -38,6 +38,6 @@ ej2_test:
 	@./p1_e2
 
 ej3_test:
-	@./p1_e3 laberinto_1.txt
+	@./p1_e3 laberinto_2.txt
 
 

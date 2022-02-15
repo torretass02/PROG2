@@ -10,7 +10,8 @@ int main(int argc, char *argv[]){
 
     FILE *pf = NULL;
     Map *mp = NULL;
-    Point *right_inferior = NULL;
+    Point *esquina = NULL;
+    int i;
 
     pf = fopen(argv[1], "r");
     if(pf==NULL){
@@ -34,15 +35,24 @@ int main(int argc, char *argv[]){
     }
 
     fprintf(stdout, "\nGet output neighboors:\n");
-    point_print(stdout, map_getNeighboor(mp, map_getOutput(mp), UP));
-    point_print(stdout, map_getNeighboor(mp, map_getOutput(mp), DOWN));
-    point_print(stdout, map_getNeighboor(mp, map_getOutput(mp), LEFT));
-    point_print(stdout, map_getNeighboor(mp, map_getOutput(mp), RIGHT));
+
+    for(i=0; i<4; i++){
+        point_print(stdout, map_getNeighboor(mp, map_getOutput(mp), i));
+    }
+
+    fprintf(stdout, "\n");
+
+    fprintf(stdout, "Get right inferior corner neighboors:\n");
+
+    esquina = point_new((map_getNcols(mp)-1), (map_getNrows(mp)-1), BARRIER);
+
+    point_print(stdout, map_getNeighboor(mp, esquina, UP));
+    point_print(stdout, map_getNeighboor(mp, esquina, LEFT));
 
     fprintf(stdout, "\n");
 
     map_free(mp);
-    point_free(right_inferior);
+    point_free(esquina);
     fclose(pf);
 
     return 0;
