@@ -113,6 +113,12 @@ Status library_addBook(Library *l, const char *descr) {
 
 	b = book_new(descr);
 
+  if(book_getNumCopies(b) < 0){
+    printf("Error, el número de copias no puede ser negativo.");
+    book_free(b);
+    return ERROR;
+  }
+
   if(_library_isFull(l) == TRUE){
     printf("La biblioteca está llena.");
     book_free(b);
