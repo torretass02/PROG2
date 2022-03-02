@@ -119,6 +119,15 @@ Status point_euDistance (const Point *p1, const Point *p2, double *distance){
 }
 
 int point_cmpEuDistance (const void *p1, const void *p2){
-    return 0;
+    Point *origen = NULL;
+    double d1, d2;
+    origen = point_new(0, 0, BARRIER);
+
+    point_euDistance(p1, origen, &d1);
+    point_euDistance(p2, origen, &d2);
+
+    if(d1 == d2) return 0;
+    else if(d1 < d2) return -1;
+    else if (d1 > d2) return 1;
 }
 
