@@ -14,7 +14,7 @@ char *string_invert(char *str) {
   Stack *s = NULL;
   int i;
   char *strout;
-  void *e;
+  char *e;
   
   s = stack_init();
 
@@ -27,9 +27,9 @@ char *string_invert(char *str) {
 
   for(i=0; i<strlen(str); i++){
     e = stack_pop(s);
-    strout[i] = *(char*)e;
+    strout[i] = e[0];
   }
-  stack_free(s);
+
   return strout;
 }
 

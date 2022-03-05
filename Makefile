@@ -34,3 +34,6 @@ all: $(MAIN) $(SRC) $(HDR) $(FUNCTIONS) $(LIBS)
 
 run:
 	./main-reverse
+
+runv:
+	valgrind --leak-check=full ./main-reverse
