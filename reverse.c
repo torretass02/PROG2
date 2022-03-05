@@ -14,21 +14,22 @@ char *string_invert(char *str) {
   Stack *s = NULL;
   int i;
   char *strout;
+  void *e;
   
-
   s = stack_init();
 
-  for(i=0; i<sizeof(str); i++){
+  for(i=0; i<strlen(str); i++){
 
     stack_push(s, &str[i]);
   }
 
   strout = malloc(stack_size(s));
 
-  for(i=0; i<sizeof(str); i++){
-    strout[i] = *(char*)stack_pop(s);
+  for(i=0; i<strlen(str); i++){
+    e = stack_pop(s);
+    strout[i] = *(char*)e;
   }
-  
+  stack_free(s);
   return strout;
 }
 
@@ -46,28 +47,39 @@ char *string_invert(char *str) {
  **/
 
 Status reverseWords(char *strout, char *strin) {
-  /*int i;
+  int i, j=0;
   Stack *s;
-  char e;
+  char *e;
+  char aux[1];
 
   s = stack_init();
 
-  for(i=0; i<sizeof(strin); i++){
-    if(strin[i] == '\0'){
-      stack_push(s, strin[i]);
+  for(i=0; i<strlen(strin); i++){
+    if(strin[i] != ' '){
+      stack_push(s, &strin[i]);
     }
     else{
       while(stack_isEmpty(s) == FALSE){
         e = stack_pop(s);
-        strcat(strout[i], e);
+        aux[0]=e[0];
+        strcat(strout, aux);
+        j++;
       }
+      strout[j]=' ';
+      j++;
     }
   }
   while(stack_isEmpty(s) == FALSE){
     e = stack_pop(s);
-    strcat(strout[i], e);
+    aux[0]=e[0];
+    strcat(strout, aux);
+    j++;
   }
 
-  stack_free(s);*/
+  stack_free(s);
   return OK;
-};
+}
+
+/*e = stack_pop(s);
+strout[j]=e[0];
+j++;*/

@@ -31,3 +31,6 @@ TARGET=$(MAIN:.c=)-$(FUNCTIONS:.c=)
 
 all: $(MAIN) $(SRC) $(HDR) $(FUNCTIONS) $(LIBS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(MAIN) $(SRC) $(FUNCTIONS) $(LDFLAGS) $(LDLIBS)
+
+run:
+	./main-reverse
