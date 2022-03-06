@@ -2,7 +2,6 @@
 #include "stack_fDoble.h"
 #include <string.h>
 #include <stdlib.h>
-/* Include here any other headers you need */
 
 /**
  * @brief: Reverses a string
@@ -11,6 +10,9 @@
  **/
 
 char *string_invert(char *str) {
+  if(!str) return NULL;
+  if(strlen(str)==0) return NULL;
+
   Stack *s = NULL;
   int i;
   char *strout;
@@ -29,7 +31,8 @@ char *string_invert(char *str) {
     e = stack_pop(s);
     strout[i] = e[0];
   }
-
+  
+  stack_free(s);
   return strout;
 }
 
@@ -47,10 +50,12 @@ char *string_invert(char *str) {
  **/
 
 Status reverseWords(char *strout, char *strin) {
+  if(!strout || !strin) return ERROR;
+  if(strlen(strin)==0) return ERROR;
+
   int i, j=0;
   Stack *s;
   char *e;
-  char aux[1];
 
   s = stack_init();
 
@@ -61,8 +66,7 @@ Status reverseWords(char *strout, char *strin) {
     else{
       while(stack_isEmpty(s) == FALSE){
         e = stack_pop(s);
-        aux[0]=e[0];
-        strcat(strout, aux);
+        strout[j]=e[0];
         j++;
       }
       strout[j]=' ';
@@ -71,15 +75,10 @@ Status reverseWords(char *strout, char *strin) {
   }
   while(stack_isEmpty(s) == FALSE){
     e = stack_pop(s);
-    aux[0]=e[0];
-    strcat(strout, aux);
+    strout[j]=e[0];
     j++;
   }
 
   stack_free(s);
   return OK;
 }
-
-/*e = stack_pop(s);
-strout[j]=e[0];
-j++;*/

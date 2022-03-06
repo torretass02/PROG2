@@ -51,10 +51,16 @@ void test_string(char *str, char *res1, char *res2) {
 }
 
 void basic_tests() {
-  char *strs[] = {"hello world"};
-  char *strs_inv[] = {"dlrow olleh"};
+  char *strs[] = {"supercalifragilistico", "hello world",
+                  "Programming is nice!!", " hello   world ",
+                  "Amor a Roma", "A ti no bonita"};
+  char *strs_inv[] = {"ocitsiligarfilacrepus", "dlrow olleh",
+                      "!!ecin si gnimmargorP", " dlrow   olleh ",
+                      "amoR a romA", "atinob on it A"};
 
-  char *strs_word[] = {"olleh dlrow"};
+  char *strs_word[] = {"ocitsiligarfilacrepus", "olleh dlrow",
+                       "gnimmargorP si !!ecin", " olleh   dlrow ",
+                       "romA a amoR", "A it on atinob"};
 
   int i;
   int numstr = sizeof(strs) / sizeof(strs[0]);
