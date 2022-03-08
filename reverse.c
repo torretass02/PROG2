@@ -21,17 +21,24 @@ char *string_invert(char *str) {
   s = stack_init();
 
   for(i=0; i<strlen(str); i++){
-
     stack_push(s, &str[i]);
   }
 
-  strout = malloc(stack_size(s));
+  if(stack_isEmpty(s) == TRUE) return NULL;
+
+  strout = malloc(stack_size(s)+1);
+
+  if(!strout) return NULL;
 
   for(i=0; i<strlen(str); i++){
     e = stack_pop(s);
     strout[i] = e[0];
-  }
+  }  
   
+  if(stack_isEmpty(s) == FALSE) return NULL;
+
+  strout[i] = '\0';
+
   stack_free(s);
   return strout;
 }
@@ -79,6 +86,9 @@ Status reverseWords(char *strout, char *strin) {
     j++;
   }
 
+  strout[j] = '\0';
+
   stack_free(s);
   return OK;
 }
+
