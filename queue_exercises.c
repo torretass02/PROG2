@@ -102,10 +102,35 @@ Queue *interleave(Queue *q) {
  * contents of both queues must remain unchanged.
  **/
 Status concatenate(Queue *qa, Queue *qb) {
-  
-  while(queue_isEmpty(qb)==FALSE){
-    queue_push(qa, queue_pop(qb));
-  }
+  Status st;
+  int size_a, i;
+  Queue *aux;
+  const void *e;
 
+  aux = queue_new();
+
+  size_a = queue_size(qa);
+
+  while(queue_isEmpty(qb)==FALSE){
+    e = queue_pop(qb);
+    if(queue_push(qa, e) == ERROR){
+      queue_push(qb, e);
+      for(i=0; i<size_a; i++){
+        queue_push(aux, queue_pop(qa));
+      }
+      while(queue_isEmpty(qb)==FALSE){
+        queue_push(qa, queue_pop(qb));
+      }
+      while(queue_isEmpty(qa)==FALSE){
+        queue_push(qb, queue_pop(qa));
+      }
+      while(queue_isEmpty(aux)==FALSE){
+        queue_push(qa, queue_pop(aux));
+      }
+      queue_free(aux);
+      return ERROR;
+    }
+  }
+  queue_free(aux);
   return OK;
 }

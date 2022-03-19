@@ -110,14 +110,21 @@ void test_concatenate(void *t1[], void *t2[], void *s1[], void *s2[], pprint p) 
     queue_push(q2, t2[i]);
   }
 
-  fprintf(stdout, "Q1 ANTES: ");
+  /*fprintf(stdout, "Q1 ANTES: ");
   queue_print(stdout, q1 ,p);
   fprintf(stdout, "Q2 ANTES: ");
-  queue_print(stdout, q2 ,p);
+  queue_print(stdout, q2 ,p);*/
 
   // Concatenate queues:
   concatenate(q1, q2);
   
+
+  /*fprintf(stdout, "Q1 DESPUES: ");
+  queue_print(stdout, q1 ,p);
+  fprintf(stdout, "Q2 DESPUES: ");
+  queue_print(stdout, q2 ,p);*/
+
+
   // Print results:
   fprintf(stdout, "(q1)\n");
   print_report(q1, s1, p);
