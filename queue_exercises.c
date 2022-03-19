@@ -102,8 +102,10 @@ Queue *interleave(Queue *q) {
  * contents of both queues must remain unchanged.
  **/
 Status concatenate(Queue *qa, Queue *qb) {
-
-  /*YOUR CODE HERE - TU CÓDIGO AQUÍ */
+  
+  while(queue_isEmpty(qb)==FALSE){
+    queue_push(qa, queue_pop(qb));
+  }
 
   return OK;
 }
